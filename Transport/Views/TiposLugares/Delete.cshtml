@@ -1,0 +1,27 @@
+﻿@model Transport.Models.Tablas.TipoLugar
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h1>Eliminar</h1>
+
+<h3>¿Esta seguro que quiere eliminarlo?</h3>
+<div>
+    <h4>TipoLugar</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lugar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lugar)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="TipoLugarID" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Regresar</a>
+    </form>
+</div>

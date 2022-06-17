@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Transport.Models.Tablas.TipoLugar>
+
+@{
+    ViewData["Title"] = "Indice";
+}
+
+<h1>Indice</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Lugar)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lugar)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TipoLugarID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.TipoLugarID">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.TipoLugarID">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

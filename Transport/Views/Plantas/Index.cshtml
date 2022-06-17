@@ -1,0 +1,72 @@
+﻿@model Transport.Models.ViewModels.PlantaDatosIndice
+
+@{
+    ViewData["Title"] = "Indice";
+    int contador = 0;
+}
+
+<h1>Indice</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Tipo de planta
+            </th>
+            <th>
+                Departamento
+            </th>
+            <th>
+                Producto
+            </th>
+            <th>
+                Opciones
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Plantas)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @{
+                        if (item.Procesamiento == true)
+                        {
+                            @: Procesadora
+                        }
+                        else
+                        {
+                            @: Extractora
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departamento.Nombre)
+                </td>
+                <td>
+                    @foreach (var producto in item.ProductosAsignados)
+                    {
+                        <p class="p-0 m-0">
+                            @producto.Producto.Nombre: @producto.Producto.Descripcion
+                        </p>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PlantaId">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.PlantaId">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PlantaId">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
